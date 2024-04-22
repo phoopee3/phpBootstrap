@@ -4,6 +4,8 @@ include( './header.php' );
 
 $components = [
     'alert',
+    'button',
+    'modal',
 ];
 
 echo "<ul>";
