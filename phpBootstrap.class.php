@@ -23,6 +23,37 @@ class phpBootstrap {
         <?php
     }
 
+    public function breadcrumb( $items = [] ) {
+        $item_length = count( $items );
+        if ( $item_length ) {
+            ?>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <?php for( $i = 0; $i < $item_length; $i++ ) {
+                        $item = $items[$i];
+                        $class = '';
+                        $atts = '';
+                        if ( $i == $item_length - 1 ) {
+                            $class = 'active';
+                            $atts = 'aria-current="page"';
+                        }
+                        ?>
+                        <li class="breadcrumb-item <?php echo $class; ?>" <?php echo $atts; ?>>
+                            <?php if ( isset( $item['url'] ) && $item['url'] ) { ?>
+                                <a href="<?php echo $item['url']; ?>">
+                            <?php } ?>
+                            <?php echo $item['content']; ?>
+                            <?php if ( isset( $item['url'] ) && $item['url'] ) { ?>
+                                </a>
+                            <?php } ?>
+                        </li>
+                    <?php } ?>
+                </ol>
+            </nav>
+            <?php
+        }
+    }
+
     /**
      * Button
      * @param string $content
@@ -38,6 +69,17 @@ class phpBootstrap {
         <button type="button" class="btn btn-<?php echo $type; ?>" <?php echo $atts; ?>>
             <?php echo $content; ?>
         </button>
+        <?php
+    }
+
+    /**
+     * link
+     * @param string $content
+     * @param string $url
+     */
+    public function link( $content, $url = '#' ) {
+        ?>
+        <a href="<?php echo $url; ?>"><?php echo $content; ?></a>
         <?php
     }
 

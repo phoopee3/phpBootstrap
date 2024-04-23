@@ -4,6 +4,7 @@ include( './header.php' );
 
 $components = [
     'alert',
+    'breadcrumb',
     'button',
     'modal',
 ];
