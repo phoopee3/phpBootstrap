@@ -5,3 +5,5 @@
 /assets/js
 !/assets/js/boostrap.min.js
 !/assets/js/boostrap.min.js.map
+!/assets/js/boostrap.bundle.min.js
+!/assets/js/boostrap.bundle.min.js.map

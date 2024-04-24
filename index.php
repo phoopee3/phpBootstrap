@@ -6,6 +6,7 @@ $components = [
     'alert',
     'breadcrumb',
     'button',
+    'dropdown',
     'modal',
 ];
 

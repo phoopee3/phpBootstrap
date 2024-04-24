@@ -23,6 +23,10 @@ class phpBootstrap {
         <?php
     }
 
+    /**
+     * Breadcrumb
+     * @param array $items An array of items with keys 'url' and 'content'
+     */
     public function breadcrumb( $items = [] ) {
         $item_length = count( $items );
         if ( $item_length ) {
@@ -69,6 +73,44 @@ class phpBootstrap {
         <button type="button" class="btn btn-<?php echo $type; ?>" <?php echo $atts; ?>>
             <?php echo $content; ?>
         </button>
+        <?php
+    }
+
+    /**
+     * Dropdown
+     * @param string $content Button text
+     * @param array $items An array of items with keys 'url' and 'content'
+     * @param boolean $split
+     */
+    public function dropdown( $content, $items = [], $type = 'primary', $split = false ) {
+        ?>
+        <div class="dropdown">
+            <button class="btn btn-<?php echo $type; ?> dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $content; ?>
+            </button>
+            <?php
+            $item_length = count( $items );
+            if ( $item_length ) {
+                ?>
+                <ul class="dropdown-menu">
+                    <?php foreach( $items as $item ) { ?>
+                        <li>
+                            <?php if ( $item['content'] == '--' ) { ?>
+                                <li><hr class="dropdown-divider"></li>
+                            <?php } else {
+                                if ( isset( $item['url'] ) && $item['url'] ) { ?>
+                                    <a class="dropdown-item" href="<?php echo $item['url']; ?>">
+                                <?php } ?>
+                                <?php echo $item['content']; ?>
+                                <?php if ( isset( $item['url'] ) && $item['url'] ) { ?>
+                                    </a>
+                                <?php } ?>
+                            <?php } ?>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php } ?>
+        </div>
         <?php
     }
 
