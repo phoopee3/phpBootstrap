@@ -80,14 +80,26 @@ class phpBootstrap {
      * Dropdown
      * @param string $content Button text
      * @param array $items An array of items with keys 'url' and 'content'
+     * @param string $type Class defining the button type
      * @param boolean $split
      */
     public function dropdown( $content, $items = [], $type = 'primary', $split = false ) {
+        $div_class = 'dropdown';
+        if ( $split ) {
+            $div_class = 'btn-group';
+        }
         ?>
-        <div class="dropdown">
-            <button class="btn btn-<?php echo $type; ?> dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $content; ?>
-            </button>
+        <div class="<?php echo $div_class; ?>">
+            <?php if ( $split ) { ?>
+                <button type="button" class="btn btn-<?php echo $type; ?>"><?php echo $content; ?></button>
+                <button type="button" class="btn btn-<?php echo $type; ?> dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+            <?php } else { ?>
+                <button class="btn btn-<?php echo $type; ?> dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php echo $content; ?>
+                </button>
+            <?php } ?>
             <?php
             $item_length = count( $items );
             if ( $item_length ) {
