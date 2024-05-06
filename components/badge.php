@@ -18,7 +18,9 @@ $bs->button( content: "secondary", type: "secondary" );
 
 $bs = new phpBootstrap();
 
-$bs->button( 'primary button' );
+$bs->badge( 'primary badge' );
+
+echo "<hr>";
 
 $types = [
     'secondary',
@@ -32,7 +34,11 @@ $types = [
 ];
 
 foreach( $types as $type ) {
-    $bs->button( content: "$type button", type: $type );
+    $bs->badge( content: "$type badge", type: $type );
 }
+
+echo "<hr>";
+
+$bs->badge( "rounded pill", "primary", "rounded-pill" );
 
 include( '../footer.php' );
